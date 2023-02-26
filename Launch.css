@@ -1,0 +1,37 @@
+/* Magic Mirror
+ * Module: Launch
+ *
+ * By Avella http://github.com/Av3lla
+ * MIT Licensed.
+ */
+ 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap');
+
+.Launch {
+	font-family: 'Noto Serif KR', serif;
+}
+ 
+.Launch header {
+	font-size: 30px;
+	padding-bottom: 20px;
+}
+ 
+.main {
+	display: grid;
+	grid-template-columns: 60% 40%;
+	grid-template-rows: 100%;
+}
+ 
+.menu {
+	font-size: 35px;
+}
+ 
+.menuInfo {
+	font-size: 12px;
+}
+ 
+.kcal {
+	margin-bottom: 10px;
+	font-size: 25px;
+}
+ 
