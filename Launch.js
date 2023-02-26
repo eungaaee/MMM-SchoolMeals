@@ -67,12 +67,10 @@ Module.register("Launch", {
 		},
 
     getLaunchMenu: async function(eduCode, schoolCode) {
-			//const formattedDate = date.replace(/-/g, '').slice(1, 8);
-			const formattedDate = "20220302";
+			const formattedDate = date.replace(/-/g, '').slice(1, 8);
 			// request
 			const url = "https://open.neis.go.kr/hub/mealServiceDietInfo";
 			const requestUrl = `${url}?Key=${this.config.key}&Type=${'json'}&pIndex=${1}&pSize=${100}&ATPT_OFCDC_SC_CODE=${eduCode}&SD_SCHUL_CODE=${schoolCode}&MLSV_YMD=${formattedDate}`;
-			console.log(requestUrl);
 			// fetch
 			let launchInfo = await fetch(requestUrl)
 				.then(rawResponse => {
