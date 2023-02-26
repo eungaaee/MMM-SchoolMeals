@@ -8,6 +8,7 @@
 // define global variables
 let date = new Date().toISOString().replace(/. /g, '-').slice(0, 10);
 let fullSchoolName;
+let isThereLaunch;
 let mealType;
 let launchMenu = '';
 let kcal;
@@ -89,10 +90,11 @@ Module.register("Launch", {
 				kcal = launchInfo.mealServiceDietInfo[1].row[0].CAL_INFO;
 				origins = launchInfo.mealServiceDietInfo[1].row[0].ORPLC_INFO;
 				nutritions = launchInfo.mealServiceDietInfo[1].row[0].NTR_INFO;
+				isThereLaunch = true;
 			} catch (error) {
 				console.log(error);
 				if (error.name === 'TypeError') {
-					launchMenu = "오늘은 급식이 없는 것 같습니다. :<";
+					isThereLaunch = false;
 				}
 			}
 	},
@@ -110,18 +112,24 @@ Module.register("Launch", {
 			originDiv.className = "origin";
 			var nutriDiv = document.createElement("div");
 			nutriDiv.className = "nutri";
-		
+			var exceptionDiv = document.createElement("div");
+
 			if (launchMenu === '') {
-				menuDiv.innerHTML = "Error> Launch menu not loaded. :<";
-				return menuDiv;
+				exceptionDiv.innerHTML = "Error> Launch menu not loaded. :<";
+				return exceptionDiv;
 			} else {		
-				menuDiv.innerHTML = launchMenu;
-				kcalDiv.innerHTML = kcal;
-				originDiv.innerHTML = origins;
-				nutriDiv.innerHTML = nutritions;
-			
-				menuInfoDiv.append(kcalDiv, originDiv);
-		}
+				if (isThereLaunch === false) {
+					exceptionDiv.innerHTML = "오늘은 급식이 없는 것 같습니다. :<";
+					return exceptionDiv;
+				} else {
+					menuDiv.innerHTML = launchMenu;
+					kcalDiv.innerHTML = kcal;
+					originDiv.innerHTML = origins;
+					nutriDiv.innerHTML = nutritions;
+	
+					menuInfoDiv.append(kcalDiv, originDiv);
+				}
+			}
 
 			mainDiv.append(menuDiv, menuInfoDiv);
 			return mainDiv;

@@ -10,6 +10,11 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
 
 ---
 
+* ## Preview
+![preview](.github/preview.png)
+
+---
+
 * ## Features
     * Today's menu
     * Kcal Info
