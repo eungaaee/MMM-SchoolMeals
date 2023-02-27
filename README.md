@@ -16,10 +16,11 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
 ---
 
 * ## Features
-    * Today's menu
+    * Today's launch menu
     * Kcal Info
     * Nutrition Info
     * Place of Origin Info
+    * ~~Today's dinner menu~~ 
 
 ---
 
@@ -41,7 +42,7 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
     	position: 'bottom_right',
     	config: {
             key: 'ApiKey',
-            schoolName: 'SchoolNameInKorea',
+            schoolName: 'SchoolName',
             updateInterval: '1000 * 60 * 60',
     	}
     },
@@ -50,7 +51,7 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
     | Option | Description | Default | Required |
     |---|---|---|---|
     | `key` | the API key from neis.| `null` | O |
-    | `schoolName` | the name of school you want to get launch menu from. | `동양고등학교` | O |
+    | `schoolName` | the name of school you want to get launch menu from. | `null` | O |
     | `updateInterval` | change the update period in Milliseconds. | `1000*60*60` | X |
 
 ---
