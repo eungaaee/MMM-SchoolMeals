@@ -16,7 +16,7 @@ Module.register("Launch", {
       this.fullSchoolName;
       this.isThereLaunch;
       this.mealType;
-      this.launchMenu = '';
+      this.launchMenu = '급식';
       this.kcal;
       this.nutritions;
       this.origins;
@@ -40,7 +40,7 @@ Module.register("Launch", {
     },
     
     getHeader: function() {
-      return `${fullSchoolName} ${mealType}`;
+      return `${this.fullSchoolName} ${this.mealType}`;
     },
 
     getSchoolInfo: async function() {
@@ -65,7 +65,8 @@ Module.register("Launch", {
     },
 
     getLaunchMenu: async function(eduCode, schoolCode) {
-      const formattedDate = date.replace(/-/g, '').slice(1, 8);
+      const date = new Date();
+      const formattedDate = date.toISOString().replace(/-/g, '').slice(0, 8);
       // request
       const url = "https://open.neis.go.kr/hub/mealServiceDietInfo";
       const requestUrl = `${url}?Key=${this.config.key}&Type=${'json'}&pIndex=${1}&pSize=${100}&ATPT_OFCDC_SC_CODE=${eduCode}&SD_SCHUL_CODE=${schoolCode}&MLSV_YMD=${formattedDate}`;
@@ -112,21 +113,15 @@ Module.register("Launch", {
       nutriDiv.className = "nutri";
       var exceptionDiv = document.createElement("div");
 
-      if (this.launchMenu === '') {
-        exceptionDiv.innerHTML = "Error> Launch menu not loaded. :<";
+      if (!this.isThereLaunch) {
+        exceptionDiv.innerHTML = "오늘은 급식이 없는 것 같습니다. :<";
         return exceptionDiv;
-      } else {		
-        if (this.isThereLaunch === false) {
-          exceptionDiv.innerHTML = "오늘은 급식이 없는 것 같습니다. :<";
-          return exceptionDiv;
-        } else {
-          menuDiv.innerHTML = this.launchMenu;
-          kcalDiv.innerHTML = this.kcal;
-          originDiv.innerHTML = this.origins;
-          nutriDiv.innerHTML = this.nutritions;
-  
-          menuInfoDiv.append(kcalDiv, originDiv);
-        }
+      } else {
+        menuDiv.innerHTML = this.launchMenu;
+        kcalDiv.innerHTML = this.kcal;
+        originDiv.innerHTML = this.origins;
+        nutriDiv.innerHTML = this.nutritions;
+        menuInfoDiv.append(kcalDiv, originDiv);
       }
 
       mainDiv.append(menuDiv, menuInfoDiv);

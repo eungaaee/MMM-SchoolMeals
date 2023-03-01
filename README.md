@@ -59,4 +59,4 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
 ### NOTE
 
 #### Known Issues
-  * You have to change the *folder name* from `launch-menu-module` to `Launch`.
+  * You Need to change the *folder name* from `launch-menu-module` to `Launch`.
