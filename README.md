@@ -1,12 +1,12 @@
-# School Launch Menu Module
+# School Meals Menu Module
 
 ![JavaScript](https://img.shields.io/badge/JavaScript-181717.svg?logo=javascript)
-![GitHub repo size](https://img.shields.io/github/repo-size/av3lla/launch-menu-module)
-[![GitHub](https://img.shields.io/github/license/av3lla/launch-menu-module)](https://mit-license.org/)
+![GitHub repo size](https://img.shields.io/github/repo-size/av3lla/school-meals-module)
+[![GitHub](https://img.shields.io/github/license/av3lla/school-meals-module)](https://mit-license.org/)
 
 ### Magic Mirror Module
 
-A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to display a *school launch menu* using data from [Korea Ministry of Education](https://open.neis.go.kr/).
+A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to display a *school meals menu* using data from [Korea Ministry of Education](https://open.neis.go.kr/).
 
 ---
 
@@ -16,11 +16,11 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
 ---
 
 * ## Features
-    * Today's launch menu
+    * Today's lunch menu
+    * Today's dinner menu 
     * Kcal Info
     * Nutrition Info
     * Place of Origin Info
-    * ~~Today's dinner menu~~ 
 
 ---
 
@@ -30,15 +30,17 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
     ### Setup
     Clone the module into your modules folder.
     ```shell
-    cd ~/MagicMirror/modules && git clone https://github.com/Av3lla/launch-menu-module
+    cd ~/MagicMirror/modules && git clone https://github.com/Av3lla/school-meals-module
     ```
+    ### [* Folder name issue](#known-issues)
+
     ### Configuration
 
     Add the module configuration to your `config.js` file.
 
     ```js
     {
-    	module: 'Launch',
+    	module: 'SchoolMeals',
     	position: 'bottom_right',
     	config: {
             key: 'ApiKey',
@@ -59,4 +61,4 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
 ### NOTE
 
 #### Known Issues
-  * You Need to change the *folder name* from `launch-menu-module` to `Launch`.
+  * You NEED to change the *folder name* from `school-meals-module` to `SchoolMeals`.
