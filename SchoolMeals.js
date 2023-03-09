@@ -133,6 +133,8 @@ Module.register("SchoolMeals", {
     lunchDiv.className = "lunch";
     var dinnerDiv = document.createElement("div");
     dinnerDiv.className = "dinner";
+    var developedbyDiv = document.createElement("div");
+    developedbyDiv.className = "devby";
     /*
     var exceptionDiv = document.createElement("div");
     var menuInfoDiv = document.createElement("div");
@@ -163,10 +165,11 @@ Module.register("SchoolMeals", {
     nutriDiv.innerHTML = this.nutritions;
     menuInfoDiv.append(kcalDiv, originDiv);
     */
-   
+    developedbyDiv.innerHTML = "이지원 Github @Av3lla";
+    
     mealIndexDiv.append(lunchIndexDiv, dinnerIndexDiv);
     menuDiv.append(lunchDiv, dinnerDiv);
-    mainDiv.append(mealIndexDiv, menuDiv);
+    mainDiv.append(mealIndexDiv, menuDiv, developedbyDiv);
     return mainDiv;
   }
 });
