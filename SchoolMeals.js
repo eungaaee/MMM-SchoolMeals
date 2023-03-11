@@ -54,12 +54,12 @@ Module.register("SchoolMeals", {
     const requestUrl = `${url}?Key=${this.config.key}&Type=${'json'}&pIndex=${1}&pSize=${100}&SCHUL_NM=${this.config.schoolName}`;
     // fetch
     const schoolInfo = await fetch(requestUrl)
-      .then(rawResponse => {
-        return rawResponse.json();
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    .then(rawResponse => {
+      return rawResponse.json();
+    })
+    .catch(error => {
+      console.error(error);
+    });
     // get school code from schoolInfo
     const result = schoolInfo.schoolInfo[1].row[0];
     const eduCode = result.ATPT_OFCDC_SC_CODE;
@@ -77,12 +77,12 @@ Module.register("SchoolMeals", {
     const requestUrl = `${url}?Key=${this.config.key}&Type=${'json'}&pIndex=${1}&pSize=${100}&ATPT_OFCDC_SC_CODE=${eduCode}&SD_SCHUL_CODE=${schoolCode}&MLSV_YMD=${formattedDate}`;
     // fetch
     const mealsInfo = await fetch(requestUrl)
-      .then(rawResponse => {
-        return rawResponse.json();
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    .then(rawResponse => {
+      return rawResponse.json();
+    })
+    .catch(error => {
+      console.error(error);
+    });
     // get lunch menu
     try {
       //this.mealType = mealsInfo.mealServiceDietInfo[1].row[0].MMEAL_SC_NM
@@ -95,7 +95,7 @@ Module.register("SchoolMeals", {
       this.nutritions = mealsInfo.mealServiceDietInfo[1].row[0].NTR_INFO;
       this.isThereLunch = true;
     } catch (error) {
-      console.log(error);
+      console.error(error);
       if (error.name === 'TypeError') {
         this.isThereLunch = false;
       }
@@ -112,7 +112,7 @@ Module.register("SchoolMeals", {
       this.nutritions = mealsInfo.mealServiceDietInfo[1].row[1].NTR_INFO;
       this.isThereDinner = true;
     } catch (error) {
-      console.log(error);
+      console.error(error);
       if (error.name === 'TypeError') {
         this.isThereDinner = false;
       }
@@ -122,9 +122,11 @@ Module.register("SchoolMeals", {
   
   getDom: function() {
     var mainDiv = document.createElement("div");
-    mainDiv.className = "main";
+    mainDiv.className = "mealsMain";
     var menuDiv = document.createElement("div");
     menuDiv.className = "menu";
+    var mealDiv = document.createElement("div");
+    mealDiv.className = "meal";
     var mealIndexDiv = document.createElement("div");
     mealIndexDiv.className = "mealindex";
     var lunchIndexDiv = document.createElement("div");
@@ -135,6 +137,7 @@ Module.register("SchoolMeals", {
     dinnerDiv.className = "dinner";
     var developedbyDiv = document.createElement("div");
     developedbyDiv.className = "devby";
+    
     /*
     var exceptionDiv = document.createElement("div");
     var menuInfoDiv = document.createElement("div");
@@ -146,16 +149,16 @@ Module.register("SchoolMeals", {
     var nutriDiv = document.createElement("div");
     nutriDiv.className = "nutri";
     */
-
+    
     lunchIndexDiv.innerHTML = "중식";
     dinnerIndexDiv.innerHTML = "석식";
     if (!this.isThereLunch) {
-      lunchDiv.innerHTML = "오늘은 점심이 없습니다. :<";
+      lunchDiv.innerHTML = "없음";
     } else {
       lunchDiv.innerHTML = this.lunchMenu;
     }
     if (!this.isThereDinner) {
-      dinnerDiv.innerHTML = "오늘은 저녁이 없습니다. :<";
+      dinnerDiv.innerHTML = "없음";
     } else {
       dinnerDiv.innerHTML = this.dinnerMenu;
     }
@@ -168,8 +171,9 @@ Module.register("SchoolMeals", {
     developedbyDiv.innerHTML = "이지원 Github @Av3lla";
     
     mealIndexDiv.append(lunchIndexDiv, dinnerIndexDiv);
-    menuDiv.append(lunchDiv, dinnerDiv);
-    mainDiv.append(mealIndexDiv, menuDiv, developedbyDiv);
+    mealDiv.append(lunchDiv, dinnerDiv);
+    menuDiv.append(mealIndexDiv, mealDiv);
+    mainDiv.append(menuDiv, developedbyDiv);
     return mainDiv;
   }
 });
