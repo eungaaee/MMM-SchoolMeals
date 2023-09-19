@@ -32,7 +32,7 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
     ```shell
     cd ~/MagicMirror/modules && git clone https://github.com/Av3lla/school-meals-module
     ```
-    ### [* Folder name issue](#known-issues)
+    ~~### [* Folder name issue](#known-issues)~~
 
     ### Configuration
 
@@ -40,7 +40,7 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
 
     ```js
     {
-    	module: 'SchoolMeals',
+    	module: 'MMM-SchoolMeals',
     	position: 'bottom_right',
     	config: {
             key: 'ApiKey',
@@ -59,6 +59,3 @@ A module for the [MagicMirror](https://github.com/MichMich/MagicMirror) to displ
 ---
 
 ### NOTE
-
-#### Known Issues
-  * You NEED to change the *folder name* from `school-meals-module` to `SchoolMeals`.

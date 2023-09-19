@@ -4,7 +4,7 @@
 * By Avella https://github.com/Av3lla
 * MIT Licensed.
 */
-Module.register("SchoolMeals", {
+Module.register("MMM-SchoolMeals", {
   defaults: {
     key: null,
     schoolName: null,
@@ -41,7 +41,7 @@ Module.register("SchoolMeals", {
   },
   
   getStyles: function() {
-    return ["SchoolMeals.css"];
+    return ["MMM-SchoolMeals.css"];
   },
   
   getHeader: function() {
