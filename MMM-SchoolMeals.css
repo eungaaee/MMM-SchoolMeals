@@ -35,12 +35,12 @@
   grid-template-rows: 100%;
   column-gap: 10%;
   font-weight: bold;
-  font-size: 40px;
+  font-size: 35px;
 }
 
 .lunch,
 .dinner {
-  font-size: 35px;
+  font-size: 30px;
 }
 
 .devby {
