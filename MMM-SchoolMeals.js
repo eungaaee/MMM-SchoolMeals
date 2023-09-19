@@ -71,6 +71,7 @@ Module.register("MMM-SchoolMeals", {
   
   getMenu: async function(eduCode, schoolCode) {
     const date = new Date();
+    date.setHours(date.getHours() + 9 ); //UTC+9
     const formattedDate = date.toISOString().replace(/-/g, '').slice(0, 8);
     // request
     const url = "https://open.neis.go.kr/hub/mealServiceDietInfo";
